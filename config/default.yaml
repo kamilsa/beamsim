@@ -1,0 +1,64 @@
+# Default configuration for BEAMSim - BEAM Chain Networking Simulator
+
+# General simulation parameters
+simulation:
+  random_seed: 42
+  max_time_seconds: 300  # Maximum simulation time in seconds
+
+# Network parameters
+network:
+  # Base network parameters from spec
+  num_validators: 16384
+  signature_size: 3072  # 3KB
+  slot_time: 4000  # ms
+  signature_aggregation_window: 3000  # ms
+  subnet_signature_threshold: 0.9  # 90%
+  aggregation_rate_per_sec: 1000
+  snark_recursion_aggregation_rate_per_sec: 100
+  snark_proof_size: 131072  # 128KB
+  snark_proof_verification_time_ms: 50
+  pq_signature_verification_time_ms: 50
+
+  # Latency parameters
+  network_latency_min_ms: 10
+  network_latency_max_ms: 100
+  network_latency_distribution: "normal"
+  sign_latency_min_ms: 10
+  sign_latency_max_ms: 100
+  sign_latency_distribution: "normal"
+
+# Topology 0 (Direct Communication) parameters
+topology0:
+  num_subnets: 128
+  redundancy_factor: 3
+  num_subnet_aggregators: 16
+  num_global_aggregators: 128
+  num_peers_with_all_roles: 0
+
+# Topology 1 (Gossipsub) parameters
+topology1:
+  num_subnets: 128
+  signatures_in_aggregation_portion: 0.9  # 90%
+  num_subnet_aggregators: 16
+  num_global_aggregators: 128
+  num_peers_with_all_roles: 0
+  gossipsub_D: 8
+  gossipsub_D_low: 6
+  gossipsub_D_high: 12
+  gossipsub_heartbeat_interval_ms: 700
+  gossipsub_mesh_outbound_min: 4
+  gossipsub_fanout_ttl_seconds: 60
+
+# Topology 2 (Grid) parameters
+topology2:
+  num_subnets: 128
+  num_subnet_aggregators: 16
+  num_global_aggregators: 128
+  num_peers_with_all_roles: 0
+
+# Metrics collection configuration
+metrics:
+  collect_bandwidth_usage: true
+  collect_message_counts: true
+  collect_latency: true
+  log_interval_ms: 1000  # How often to log metrics during simulation

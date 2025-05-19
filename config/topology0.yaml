@@ -1,0 +1,30 @@
+# Topology 0 (Direct Communication Model) specific configuration
+
+topology: 0  # Specifies which topology implementation to use
+
+# Override topology0 parameters if needed
+topology0:
+  # These values are the same as default but included for clarity
+  num_subnets: 128
+  redundancy_factor: 3
+  num_subnet_aggregators: 16
+  num_global_aggregators: 128
+  num_peers_with_all_roles: 0
+
+# Optional: Override simulation parameters
+simulation:
+  max_time_seconds: 300  # Maximum simulation time in seconds
+
+# Optional: Override network parameters
+network:
+  # In direct communication, we might want to adjust latency parameters
+  network_latency_min_ms: 10
+  network_latency_max_ms: 100
+  network_latency_distribution: "normal"
+
+# Optional: Metrics configuration specific to this topology
+metrics:
+  collect_bandwidth_usage: true
+  collect_message_counts: true
+  collect_latency: true
+  log_interval_ms: 1000
